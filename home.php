@@ -24,8 +24,7 @@ include ('templates/header.php');
 <div class="row justify-content-center">
     <div class="col-6">
         <p>Profilbild</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est aliquid, ipsa quidem quo maiores cupiditate. Id qui facere, ex odit dolorem sapiente maxime corrupti officiis quia, quisquam, placeat ab tenetur.</p>
-        
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est aliquid, ipsa quidem quo maiores cupiditate. Id qui facere, ex odit dolorem sapiente maxime corrupti officiis quia, quisquam, placeat ab tenetur.</p>  
     </div>
     <div class="col-6">
         <p>Information</p>
