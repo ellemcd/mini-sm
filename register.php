@@ -5,29 +5,7 @@ require ('functions.php');
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title ?> </title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css">
-    <!-- My CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <link rel="stylesheet" href="css/login.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-
-</head>
-
-<div class="container">
-
-  <h1>
+<?php include ('templates/header-login.php'); ?>
 
   <div class="login-form">
       <form action="register-auth.php" method="POST">
@@ -73,5 +51,5 @@ require ('functions.php');
       </form>
   </div>
 
-</div>
+
 
