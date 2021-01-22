@@ -1,0 +1,16 @@
+.radio input {
+    width: 25px;
+    padding: 3px;
+    height: 40px;
+    border-radius: 74px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 15px;
+    padding-left: 50px;
+   
+}
+
+.container p {
+  font-size: 14px;
+  margin: 0;
+}
