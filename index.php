@@ -2,8 +2,6 @@
 
 # Start session because this will be on every page.
 require ('functions.php');
-
-
 ?>
 
 <?php include 'templates/header-login.php' ?>

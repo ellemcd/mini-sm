@@ -38,15 +38,15 @@ require ('functions.php');
     <ul class="navbar-nav mr-auto">
       
       <li class="nav-item">
-        <a class="nav-link" href="/home.php">Home</a>
+        <a class="nav-link" href="http://localhost/github/mini-sm/home.php">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Users</a>
+        <a class="nav-link" href="http://localhost/github/mini-sm/Users.php">Users</a>
       </li>
       
     </ul>
 
-    <a href="/index.php">
+    <a href="http://localhost/github/mini-sm/index.php">
         <button type="button" class="btn btn-secondary my-2 my-sm-0">Log In</button>
     </a>
   
