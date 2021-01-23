@@ -1,21 +1,21 @@
 <?php
 
-# Start session because this will be on every page.
-require ('functions.php');
+session_start();
+
 
 ?>
 
-<?php include ('templates/header-login.php'); ?>
+<?php include 'templates/header-login.php'; ?>
 
   <div class="login-form">
       <form action="register-auth.php" method="POST">
         <h4>Create an account</h4>
         <div class="form-group">
-          <input type="text" name="fname" placeholder="First Name">
+          <input type="text" id="first_name" name="first_name" placeholder="First Name">
           <span class="input-icon"><i class="fa fa-envelope"></i></span>
         </div>
         <div class="form-group">
-          <input type="text" name="lname" placeholder="Last name">
+          <input type="text" name="last_name" placeholder="Last name">
           <span class="input-icon"><i class="fa fa-envelope"></i></span>
         </div>
         <div class="form-group">
@@ -50,6 +50,5 @@ require ('functions.php');
         <a class="create-acc" href="index.php">I already have an account</a>
       </form>
   </div>
-
 
 

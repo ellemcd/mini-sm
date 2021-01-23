@@ -1,7 +1,9 @@
 <?php
 
 # Start session because this will be on every page.
-require ('functions.php');
+session_start();
+
+require 'functions.php';
 
 ?>
 

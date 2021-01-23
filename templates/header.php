@@ -1,7 +1,9 @@
 <?php
 
 # Start session because this will be on every page.
-require ('functions.php');
+session_start();
+require 'functions.php';
+
 
 ?>
 
@@ -17,7 +19,6 @@ require ('functions.php');
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css">
     <!-- My CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/home.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
@@ -38,7 +39,7 @@ require ('functions.php');
     <ul class="navbar-nav mr-auto">
       
       <li class="nav-item">
-        <a class="nav-link" href="/home.php">Home</a>
+        <a class="nav-link" href="http://localhost/github/mini-sm/home.php">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">My profile</a>
@@ -49,7 +50,7 @@ require ('functions.php');
       
     </ul>
 
-    <a href="/logout.php">
+    <a href="http://localhost/github/mini-sm/logout.php">
         <button type="button" class="btn btn-secondary my-2 my-sm-0">Log Out</button>
     </a>
   

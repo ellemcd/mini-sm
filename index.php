@@ -1,17 +1,15 @@
 <?php
 
+session_start();
 # Start session because this will be on every page.
-require ('functions.php');
+
+
 ?>
 
 <?php include 'templates/header-login.php' ?>
 
-<div class="container">
-
-  
-
   <div class="login-form">
-      <form action="auth.php" method="POST">
+      <form action="login-auth.php" method="POST">
         <h4>Log in</h4>
         <div class="form-group">
           <input type="email" name="email" placeholder="E-mail Address">
@@ -26,7 +24,7 @@ require ('functions.php');
       </form>
   </div>
 
-</div>
+
 
 
 
