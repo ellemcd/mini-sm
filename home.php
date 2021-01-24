@@ -39,7 +39,6 @@ if (!isset($_SESSION['logged_in'])) {
 
         <?php
 
-
         // Get images from the database
         $query = $connection->query("SELECT * FROM images ORDER BY uploaded_on DESC");
 

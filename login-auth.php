@@ -18,6 +18,11 @@ if (password_verify($_POST['password'], $user['password'])){
     session_regenerate_id();
     $_SESSION['logged_in'] = true;
     $_SESSION['email'] = $user['email'];
+    $_SESSION['first_name'] = $user['first_name'];
+    $_SESSION['last_name'] = $user['last_name'];
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['posted_by'] = $user['posted_by'];
+
     header('Location: home.php');
 } else {
     header('Location: index.php');

@@ -5,6 +5,8 @@ require ('config.php');
 $connection = connectDB($database);
 $users = getUsers($connection);
 
+$email = $title = $ingredients = '';
+$errors = array('first_name' =>'','last_name'=>'', 'email' => '','password' => '');
 // $statement = $connection->prepare("INSERT INTO users (first_name, last_name) VALUES ('test' 'test')");
 // $result = $statement->execute();
 // var_dump($result);

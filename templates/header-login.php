@@ -5,6 +5,7 @@ session_start();
 
 require 'functions.php';
 
+
 ?>
 
 <!DOCTYPE html>
