@@ -73,6 +73,11 @@ function addToDatabase($connection, $tableName, $newData) {
 
 }
 
+
+
+
+
+
 function getUserPosts($connection, $user_id) {
     $statement = $connection->prepare('SELECT users.first_name, posts.posted_by, posts.body, posts.created_at, posts.id FROM posts INNER JOIN users ON users.id = posts.posted_by WHERE user_id = :user_id');
     $statement->execute([
@@ -109,6 +114,34 @@ function getOneUser($connection, $user_id){
     return reset($results);
 }
 
+
+function getProfilePicture($connection, $user_id){
+
+    $statement = $connection->prepare('SELECT file_name FROM images WHERE id = :user_id');
+      
+   $statement->execute([
+         'user_id' => $user_id,
+      ]);
+  
+     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+   // reset retunerar det första resultet i arrayen.
+      return ($results);
+  }
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
 // function getPosts($connection, $user_id){
 
 //     $statement = $connection->prepare('SELECT * FROM posts WHERE id = :user_id');
@@ -122,20 +155,6 @@ function getOneUser($connection, $user_id){
 //     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 //     // reset retunerar det första resultet i arrayen.
 //     return ($results);
-// }
-
-
-// function getProfilePicture($connection, $user_id){
-
-//     $statement = $connection->prepare('SELECT * FROM images WHERE id = :user_id');
-    
-//     $statement->execute([
-//         'user_id' => $user_id,
-//     ]);
-
-//     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-//     // reset retunerar det första resultet i arrayen.
-//     return reset($results);
 // }
 
 

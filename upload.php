@@ -1,46 +1,45 @@
 <?php
 
-if(isset($_POST['submit'])){
-    $file = $_FILES['file'];
+session_start();
 
-    $fileName = $_FILES['file']['name'];
-    $fileTmpName = $_FILES['file']['tmp_name'];
-    $fileSize = $_FILES['file']['size'];
-    $fileError = $_FILES['file']['error'];
-    $fileType = $_FILES['file']['Type'];
+include 'functions.php';
+$user_id = $_SESSION['user_id'];
+// File upload path
+$targetDir = "uploads/";
+$fileName = basename($_FILES["file"]["name"]);
+$targetFilePath = $targetDir . $fileName;
+$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 
-    $fileExt = explode('.', $fileName);
-    $fileActualExt = strtolower(end($fileExt));
+if(isset($_POST["upload"]) && !empty($_FILES["file"]["name"])){
+    // Allow certain file formats
+    $allowTypes = array('jpg','png','jpeg');
 
-    $allowed = array('jpg','jpeg','png');
-
-    if (in_array($fileActualExt, $allowed)) {
-        if ($fileError === 0) {
-           if ($fileSize < 500000) {
-               $fileNameNew = uniqid('', true).".".$fileActualExt;
-
-               $fileDestination = 'uploads/'.$fileNameNew;
-               move_uploaded_file($fileTmpName, $fileDestination);
-
-               header('Location: home.php?uploadedsuccess');
-           } else {
-            echo "Your file was too big";
-           }
-        } else {
-            echo "There was an error your file";
+    if (in_array($fileType, $allowTypes)) {
+        // Upload file to server
+        if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+            // Insert image file name into database
+            $insert = $connection->query("INSERT into images (user_id, file_name, uploaded_on) VALUES ('$user_id' , '".$fileName."', NOW())");
+            if($insert){
+                header('location:home.php');
+                //$statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+            }else{
+                $statusMsg = "File upload failed, please try again.";
+            } 
+        }else{
+            $statusMsg = "Sorry, there was an error uploading your file.";
         }
-    } else {
-        echo "You can't upload files of this type";
+    }else{
+        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
     }
-
-
-    $user_id = $_GET['user'];
-
-$userImage = [ 
-    'user_id' => $user_id,
-    'status' => 1,
-];
-
-addToDatabase($connection, 'images', $userImage);
-
+}else{
+    $statusMsg = 'Please select a file to upload.';
 }
+
+// Display status message
+echo $statusMsg;
+?>
+
+
+
+
+

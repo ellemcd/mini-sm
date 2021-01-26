@@ -1,4 +1,10 @@
-<?php include "templates/header.php" ?>
+<?php
+if (!isset($_SESSION['logged_in'])) {
+  include "templates/header-login.php";
+} else {
+  include "templates/header.php";
+}
+ ?>
 
 <?php foreach ($users as $user) : ?>
 
