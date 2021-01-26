@@ -2,7 +2,6 @@
 
 session_start();
 
-
 ?>
 
 <?php include 'templates/header-login.php' ?>

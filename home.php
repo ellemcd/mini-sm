@@ -6,6 +6,7 @@ if (!isset($_SESSION['logged_in'])) {
     header('Location: index.php');
     exit;
 }
+
 include 'templates/header.php'; 
 
 $user_id = $_SESSION['user_id'];
@@ -25,14 +26,16 @@ $posts = getUserPosts($connection, $user_id);
 <div class="row">
     <div class="col-6">
         <div class="profile-picture">
-            <img src="uploads/default.png" class="profile-img" width="450" alt="profile-picture">
+            <img width="450" src='<?php echo $image_src;  ?>' >  
         </div>
 
         <form action="upload.php" method="post" enctype="multipart/form-data">
             <p> Select Image File to Upload:</p>
             <input type="file" name="file">
-            <input type="submit" name="submit" value="Upload">
+            <input type="submit" name="upload" value="upload">
         </form>
+
+
 
     </div>
 

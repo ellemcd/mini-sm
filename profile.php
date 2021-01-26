@@ -5,6 +5,9 @@ include 'templates/header.php';
 $user_id = $_GET['user'];
 $user = getOneUser($connection, $user_id);
 $posts = getUserPosts($connection, $user_id);
+$profileImg = getProfilePicture($connection, $user_id);
+
+
 ?>
 
 <div class="row text-center">
@@ -16,7 +19,9 @@ $posts = getUserPosts($connection, $user_id);
 <div class="row">
     <div class="col-6">
         <div class="profile-picture">
-            <b>A picture here</b>
+            <?php foreach ($profileImg as $image) : ?>
+                <img src="uploads/profile".$user_id.".jpg'>";
+            <?php endforeach; ?>
         </div>
     </div>
 
