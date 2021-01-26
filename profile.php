@@ -7,7 +7,6 @@ $user = getOneUser($connection, $user_id);
 $posts = getUserPosts($connection, $user_id);
 $profileImg = getProfilePicture($connection, $user_id);
 
-
 ?>
 
 <div class="row text-center">
@@ -19,9 +18,7 @@ $profileImg = getProfilePicture($connection, $user_id);
 <div class="row">
     <div class="col-6">
         <div class="profile-picture">
-            <?php foreach ($profileImg as $image) : ?>
-                <img src="uploads/profile".$user_id.".jpg'>";
-            <?php endforeach; ?>
+            <img width="450" src="<?php echo $profileImg; ?>">
         </div>
     </div>
 

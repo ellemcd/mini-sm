@@ -10,6 +10,6 @@
 
         <h4>You've been logged out.</h4>
         <p>
-            <a href="http://localhost/github/mini-sm/index.php">Return to homepage</a></p>
+            <a href="index.php">Return to homepage</a></p>
     
     </div>

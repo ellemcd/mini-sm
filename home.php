@@ -12,6 +12,7 @@ include 'templates/header.php';
 $user_id = $_SESSION['user_id'];
 $user = getOneUser($connection, $user_id);
 $posts = getUserPosts($connection, $user_id);
+$image_src = getProfilePicture($connection, $user_id);
 
 ?>
 
@@ -21,22 +22,17 @@ $posts = getUserPosts($connection, $user_id);
     </div>
 </div>
 
-
 <!-- First Row -->
 <div class="row">
     <div class="col-6">
         <div class="profile-picture">
-            <img width="450" src='<?php echo $image_src;  ?>' >  
+            <img width="450" src='<?php echo $image_src; ?>' >
         </div>
-
         <form action="upload.php" method="post" enctype="multipart/form-data">
             <p> Select Image File to Upload:</p>
             <input type="file" name="file">
             <input type="submit" name="upload" value="upload">
         </form>
-
-
-
     </div>
 
     <div class="col-6">
@@ -48,7 +44,14 @@ $posts = getUserPosts($connection, $user_id);
             <label for="country" class="">Edit your Country</label>
             <input type="text" class="form-control" name="country" id="country" value="<?= $user['country']; ?>" />
             <select class="form-control" id="exampleSelect1" name="gender">
-                <?php foreach(['W' => 'Woman', 'M' => 'Male', 'O' => 'Other'] as $key => $value): ?>
+               <?php
+                $genders = [
+                    'W' => 'Woman',
+                    'M' => 'Male',
+                    'O' => 'Other',
+                ];
+               ?>
+                <?php foreach($genders as $key => $value): ?>
                   <option value="<?php echo $key?>" <?php echo ($key == $user['gender'] ? 'selected' : '') ?>><?php echo $value; ?></option>
                 <?php endforeach; ?>
             </select> 

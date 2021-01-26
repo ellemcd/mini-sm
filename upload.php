@@ -6,8 +6,13 @@ include 'functions.php';
 $user_id = $_SESSION['user_id'];
 // File upload path
 $targetDir = "uploads/";
-$fileName = basename($_FILES["file"]["name"]);
-$targetFilePath = $targetDir . $fileName;
+$fileName = $_FILES["file"]["name"];
+$fileExt = explode('.', $fileName);
+$fileActualExt = strtolower(end($fileExt));
+
+$fileNameNew = "profile".$user_id.".".$fileActualExt;
+
+$targetFilePath = $targetDir . $fileNameNew;
 $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 
 if(isset($_POST["upload"]) && !empty($_FILES["file"]["name"])){
@@ -18,7 +23,7 @@ if(isset($_POST["upload"]) && !empty($_FILES["file"]["name"])){
         // Upload file to server
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
             // Insert image file name into database
-            $insert = $connection->query("INSERT into images (user_id, file_name, uploaded_on) VALUES ('$user_id' , '".$fileName."', NOW())");
+            $insert = $connection->query("INSERT into images (user_id, file_name, uploaded_on) VALUES ('$user_id' , '".$fileNameNew."', NOW())");
             if($insert){
                 header('location:home.php');
                 //$statusMsg = "The file ".$fileName. " has been uploaded successfully.";

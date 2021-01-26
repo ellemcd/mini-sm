@@ -42,7 +42,7 @@ require 'functions.php';
     
     </ul>
 
-    <a href="http://localhost/github/mini-sm/index.php">
+    <a href="index.php">
         <button type="button" class="btn btn-secondary my-2 my-sm-0">Log In</button>
     </a>
   

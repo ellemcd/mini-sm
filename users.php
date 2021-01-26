@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if (!isset($_SESSION['logged_in'])) {
   include "templates/header-login.php";
 } else {

@@ -117,44 +117,18 @@ function getOneUser($connection, $user_id){
 
 function getProfilePicture($connection, $user_id){
 
-    $statement = $connection->prepare('SELECT file_name FROM images WHERE id = :user_id');
+    $statement = $connection->prepare('SELECT file_name FROM images WHERE user_id=:user_id');
       
-   $statement->execute([
-         'user_id' => $user_id,
-      ]);
+    $statement->execute([
+        'user_id' => $user_id,
+    ]);
   
-     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-   // reset retunerar det första resultet i arrayen.
-      return ($results);
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    if (empty($results)) {
+        return 'uploads/default.png';
+    }
+
+    return 'uploads/' . $results[0]['file_name'];
   }
   
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-// function getPosts($connection, $user_id){
-
-//     $statement = $connection->prepare('SELECT * FROM posts WHERE id = :user_id');
-    
-//     $statement->execute([
-//         'user_id' => $user_id,
-//     ]
-
-//     );
-
-//     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-//     // reset retunerar det första resultet i arrayen.
-//     return ($results);
-// }
-
-
