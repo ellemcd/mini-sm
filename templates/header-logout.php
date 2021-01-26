@@ -1,7 +1,9 @@
 <?php
 
 # Start session because this will be on every page.
-$title = "Mini-SM | Logged out";
+session_start();
+
+require 'functions.php';
 
 
 ?>

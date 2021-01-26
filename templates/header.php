@@ -4,7 +4,6 @@
 session_start();
 require 'functions.php';
 
-$user_id = $_GET['user'];
 ?>
 
 <!DOCTYPE html>
@@ -42,10 +41,10 @@ $user_id = $_GET['user'];
         <a class="nav-link" href="http://localhost/github/mini-sm/home.php">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">My profile</a>
+        <a class="nav-link" href="http://localhost/github/mini-sm/my-profile.php">My profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Users</a>
+        <a class="nav-link" href="http://localhost/github/mini-sm/users.php">Users</a>
       </li>
       
     </ul>

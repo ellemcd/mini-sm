@@ -1,4 +1,4 @@
-<?php include "templates/header-login.php" ?>
+<?php include "templates/header.php" ?>
 
 <?php foreach ($users as $user) : ?>
 

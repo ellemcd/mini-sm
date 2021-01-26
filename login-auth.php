@@ -22,7 +22,8 @@ if (password_verify($_POST['password'], $user['password'])){
     $_SESSION['last_name'] = $user['last_name'];
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['posted_by'] = $user['posted_by'];
-
+    $_SESSION['gender'] = $user['gender'];
+    $_SESSION['country'] = $user['country'];
     header('Location: home.php');
 } else {
     header('Location: index.php');

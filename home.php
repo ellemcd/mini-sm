@@ -6,64 +6,85 @@ if (!isset($_SESSION['logged_in'])) {
     header('Location: index.php');
     exit;
 }
+include 'templates/header.php'; 
+
+$user_id = $_SESSION['user_id'];
+$user = getOneUser($connection, $user_id);
+$posts = getUserPosts($connection, $user_id);
 
 ?>
 
-<?php include 'templates/header.php'; ?>
-
 <div class="row text-center">
     <div class="col-12 ">
-        <h2 class="home-msg">Welcome, <?php echo $_SESSION['first_name']; ?>! </h2>
+        <h2 class="home-msg">Welcome, <?php echo $user['first_name']; ?>! </h2>
     </div>
 </div>
 
+
+<!-- First Row -->
 <div class="row">
-
-    <div class="col-4">
-
-        <h6>Edit your profile</h6>
-
-    </div>
-
-</div>
-
-<div class="row justify-content-center">
     <div class="col-6">
+        <div class="profile-picture">
+            <img src="uploads/default.png" class="profile-img" width="450" alt="profile-picture">
+        </div>
+
         <form action="upload.php" method="post" enctype="multipart/form-data">
             <p> Select Image File to Upload:</p>
             <input type="file" name="file">
             <input type="submit" name="submit" value="Upload">
         </form>
+
     </div>
+
     <div class="col-6">
-
-        <?php
-
-        // Get images from the database
-        $query = $connection->query("SELECT * FROM images ORDER BY uploaded_on DESC");
-
-        if ($query->num_rows > 0) {
-            while ($row = $query->fetch_assoc()) {
-                $imageURL = 'uploads/' . $row["file_name"];
-        ?>
-                <img src="<?php echo $imageURL; ?>" alt="" />
-            <?php }
-        } else { ?>
-            <p>No image(s) found...</p>
-        <?php } ?>
+        <form action="updateProfile.php" method="post" class="select-child">
+            <label for="first_name" class="">Edit your first name </label>
+            <input type="text" class="form-control" name="first_name" id="first_name" value="<?= $user['first_name']; ?>" />
+            <label for="last_name" class="">Edit your last name</label>
+            <input type="text" class="form-control" name="last_name" id="last_name" value="<?= $user['last_name']; ?>"/>
+            <label for="country" class="">Edit your Country</label>
+            <input type="text" class="form-control" name="country" id="country" value="<?= $user['country']; ?>" />
+            <select class="form-control" id="exampleSelect1" name="gender">
+                <?php foreach(['W' => 'Woman', 'M' => 'Male', 'O' => 'Other'] as $key => $value): ?>
+                  <option value="<?php echo $key?>" <?php echo ($key == $user['gender'] ? 'selected' : '') ?>><?php echo $value; ?></option>
+                <?php endforeach; ?>
+            </select> 
+            <label for="email" class="">Change your Email: </label>
+            <input type="email" class="form-control" name="email" id="email" class="" value="<?= $user['email']; ?>"/> <br>
+            <button type="submit" class="btn btn-primary form-control" name="submit" class="btn btn-primary">Spara</button>
+        </form>
 
     </div>
-
 </div>
-
+<!-- End Row --->
+<br>
+<!-- Second Row --->
 <div class="row">
-
-    <div class="col-4">
-
+    <div class="col-6">
+        <p>Email: <?php echo $user['email'] ?></p>
+        <p>First Name: <?php echo $user['first_name'] ?></p>
+        <p>Last Name: <?php echo $user['last_name'] ?></p>
+        <p>Country: <?php echo $user['country'] ?></p>
+        <p>Gender: <?php switch ($user['gender']) { case 'W': echo 'Woman'; break; case 'M': echo 'Male'; break; case 'O': echo 'Other'; break;}; ?></p>
     </div>
-    <div class="col-4">
-        <p>Column 2</p>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, sunt ad ipsa, esse vitae accusantium atque, nemo modi sapiente expedita minima reprehenderit! Temporibus reiciendis corrupti sunt, obcaecati maiores facilis, iure nulla veniam quos dolor fuga iste voluptatibus non similique repudiandae laudantium unde! Minima saepe a vitae architecto? Nulla aliquam commodi assumenda enim unde praesentium quibusdam nostrum repellat similique veritatis. Consequatur!</p>
+
+    <div class="col-6">
+        <h4>Your Comments:</h4>
+            <?php foreach ($posts as $post) : ?>
+                <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                    <strong class="mr-auto"><a href="profile.php?user=<?php echo $post['posted_by']; ?>"><?php echo $post['first_name']; ?></strong></a>
+                        <small>&nbsp; <?php echo $post['created_at']; ?></small>
+                        <a href="deletePost.php?post_id=<?php echo $post['id'] ?>" type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
+                    </div>
+                    <div class="toast-body">
+                        <?php echo $post['body']; ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
     </div>
 
 </div>
+<!-- End Row --->
