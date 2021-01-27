@@ -9,10 +9,9 @@ if (!isset($_SESSION['logged_in'])) {
 
 include 'templates/header.php';
 
-
 // user_id is based on the user that is logged in.
 $user_id = $_SESSION['user_id'];
-$users = getUsers($connection);
+
 $user = getOneUser($connection, $user_id);
 $posts = getUserPosts($connection, $user_id);
 $profilePicture = getProfilePicture($connection, $user_id);

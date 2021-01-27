@@ -7,7 +7,7 @@
       <form action="login-auth.php" method="POST">
         <h4>Log in</h4>
         <div class="form-group">
-          <input type="email" name="email" placeholder="e-mail" value="<?php echo htmlspecialchars($email) ?>"><div class="red-text"><?php echo $errors['email']; ?></div>
+          <input type="email" name="email" placeholder="e-mail" value=""><div class="red-text"><?php echo $errors['email']; ?></div>
           <span class="input-icon"><i class="fa fa-envelope"></i></span>
         </div>
         <div class="form-group">

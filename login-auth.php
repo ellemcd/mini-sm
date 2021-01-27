@@ -24,7 +24,6 @@ if (isset($_POST['submit-login'])) {
         session_regenerate_id();
         $_SESSION['logged_in'] = true;
         $_SESSION['user_id'] = $user['id'];
-       
         header('Location: home.php');
     } else {
         header('Location: index.php');

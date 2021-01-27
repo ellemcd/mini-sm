@@ -8,7 +8,6 @@ if (!isset($_SESSION['logged_in'])) {
 }
 
 $users = combinedPicUser($connection);
-
 ?>
 
 <?php foreach ($users as $user) : ?>

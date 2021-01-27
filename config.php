@@ -10,7 +10,9 @@ $database = [
 function connectDB($database)
 {
     try {
-        return new PDO ("mysql:host={$database['host']};dbname={$database['name']}", $database['user'], $database['password']);
+        return new PDO ("mysql:host={$database['host']};dbname={$database['name']}", $database['user'], $database['password'], [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]);
     } catch (PDOException $e) {
         var_dump($e->getMessage());
     }

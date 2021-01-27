@@ -3,10 +3,10 @@
 require ('config.php');
 
 $connection = connectDB($database);
-$users = getUsers($connection);
-$user = getOneUser($connection, $user_id);
-$posts = getUserPosts($connection, $user_id);
-$profilePicture = getProfilePicture($connection, $user_id);
+// $users = getUsers($connection);
+// $user = getOneUser($connection, $user_id);
+// $posts = getUserPosts($connection, $user_id);
+// $profilePicture = getProfilePicture($connection, $user_id);
 
 
 function addToDatabase($connection, $tableName, $newData) {
@@ -20,7 +20,7 @@ function addToDatabase($connection, $tableName, $newData) {
 
     $statement = $connection -> prepare($sql);
     $statement -> execute($newData);
-
+    return $connection->lastInsertId();
 }
 
 function getUserPosts($connection, $user_id) {
@@ -45,20 +45,20 @@ function getUsers($connection){
 
 }
 
-function combinedPicUser($connection){
-
+function combinedPicUser($connection) {
     $statement = $connection -> prepare ('SELECT users.id, users.first_name, users.last_name, users.country, users.created_at, images.file_name FROM users LEFT JOIN images ON users.id = images.user_id');
 
     $statement->execute();
 
-    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $users = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    if (empty($results)) {
-        return 'default.png';
+    foreach ($users as $index => $user){
+        if(empty($user['file_name'])) {
+            $users[$index]['file_name'] = 'default.png';
+        }
     }
 
-    return $results;
-
+    return $users;
 }
 
 function getOneUser($connection, $user_id){
@@ -75,7 +75,7 @@ function getOneUser($connection, $user_id){
 }
 
 
-function getProfilePicture($connection, $user_id){
+function getProfilePicture($connection, $user_id) {
 
     $statement = $connection->prepare('SELECT file_name FROM images WHERE user_id = :user_id');
       
@@ -91,7 +91,7 @@ function getProfilePicture($connection, $user_id){
     }
 
     return 'uploads/' . $picture[0]['file_name'];
-  }
+}
   
 
 
