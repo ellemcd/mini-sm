@@ -3,7 +3,6 @@
 # Start session because this will be on every page.
 session_start();
 require 'functions.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +17,6 @@ require 'functions.php';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css">
     <!-- My CSS -->
     <link rel="stylesheet" href="css/style.css">
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 

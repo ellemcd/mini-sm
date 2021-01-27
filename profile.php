@@ -1,11 +1,17 @@
 <?php
 
-include 'templates/header.php';
+session_start();
+
+if (!isset($_SESSION['logged_in'])) {
+  include "templates/header-login.php";
+} else {
+  include "templates/header.php";
+}
 
 $user_id = $_GET['user'];
 $user = getOneUser($connection, $user_id);
 $posts = getUserPosts($connection, $user_id);
-$profileImg = getProfilePicture($connection, $user_id);
+$profilePicture = getProfilePicture($connection, $user_id);
 
 ?>
 
@@ -18,7 +24,7 @@ $profileImg = getProfilePicture($connection, $user_id);
 <div class="row">
     <div class="col-6">
         <div class="profile-picture">
-            <img width="450" src="<?php echo $profileImg; ?>">
+            <img width="450" src="<?php echo $profilePicture; ?>">
         </div>
     </div>
 

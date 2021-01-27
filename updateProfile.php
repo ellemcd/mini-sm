@@ -13,9 +13,7 @@ if (isset($_POST['submit'])) {
     $country = $_POST['country'];
     $gender = $_POST['gender'];
 
-    $statement = $connection->prepare('UPDATE users 
-        SET email=:email, first_name=:first_name, last_name=:last_name, country=:country, gender=:gender
-        WHERE id=:id');
+    $statement = $connection -> prepare ('UPDATE users SET email=:email, first_name=:first_name, last_name=:last_name, country=:country, gender=:gender WHERE id=:id');
 
     $statement->execute([
         'id' => $user_id,
@@ -28,21 +26,4 @@ if (isset($_POST['submit'])) {
 
     header('Location: home.php');
 
-    // $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
-
-    // $statement = $connection->prepare($sql);
-
-    // $statement->bindParam('email', $email);
-    // $statement->bindParam('id', $user_id);
-
-
-    // if ($statement->execute()) {
-    //     $_SESSION['email'] = $email;
-    // }
-
-    // print '<pre>';
-    //  print_r($connection->errorInfo());
-    //  die;
-
-   
 } 

@@ -21,3 +21,19 @@ body {
     margin: 20px 0 20px 0;
 }
 
+footer {
+    margin-top: 40px;
+    height: 50px;
+    background-color: #78C2AD;
+    color: white;
+}
+
+.profile-picture {
+    max-width: 450px;
+}
+
+.profile-picture img {
+    object-fit: cover;
+    width: 250px;
+    height: 237px;
+}

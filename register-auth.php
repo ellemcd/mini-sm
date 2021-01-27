@@ -30,13 +30,9 @@ if (isset($_POST['email'], $_POST['first_name'], $_POST['last_name'],$_POST['gen
         
         $_SESSION['logged_in'] = true;
         $_SESSION['email'] = $user['email'];
-        $_SESSION['first_name'] = $user['first_name'];
-        $_SESSION['last_name'] = $user['last_name'];
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['posted_by'] = $user['posted_by'];
-        $_SESSION['gender'] = $user['gender'];
-        $_SESSION['country'] = $user['country'];
-        header('Location: index.php');
+       
+        header('Location: home.php');
 } else {
-    echo 'Please fill out the form.';
+   
 }

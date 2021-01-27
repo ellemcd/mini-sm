@@ -5,6 +5,7 @@ include 'templates/header.php';
 $user_id = $_SESSION['user_id'];
 $user = getOneUser($connection, $user_id);
 $posts = getUserPosts($connection, $user_id);
+$image_src = getProfilePicture($connection, $user_id);
 ?>
 
 
