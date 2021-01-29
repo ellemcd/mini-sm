@@ -1,5 +1,7 @@
 <?php
 
+
+
 $database = [
     'host' => '127.0.0.1',
     'name' => 'dw_mini-sm',
@@ -18,7 +20,7 @@ function connectDB($database)
     }
 }
 
-
+$connection = connectDB($database);
 
 ?>
 

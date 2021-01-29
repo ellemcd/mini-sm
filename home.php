@@ -20,7 +20,7 @@ $profilePicture = getProfilePicture($connection, $user_id);
 
 <div class="row text-center">
     <div class="col-12 ">
-        <h2 class="home-msg">Welcome, <?php echo $user['first_name']; ?>! </h2>
+        <h2 class="home-msg">Welcome <?php echo $user['first_name']; ?> </h2>
     </div>
 </div>
 
@@ -30,10 +30,12 @@ $profilePicture = getProfilePicture($connection, $user_id);
         <div class="profile-picture">
             <img src='<?php echo $profilePicture; ?>'>
         </div>
+        
         <form action="upload.php" method="post" enctype="multipart/form-data">
             <p> Select Image File to Upload:</p>
             <input type="file" name="file">
-            <input type="submit" name="upload" value="upload">
+            <input type="submit" class="btn btn-primary " name="upload" value="Upload">
+
         </form>
     </div>
 
@@ -67,8 +69,11 @@ $profilePicture = getProfilePicture($connection, $user_id);
             <input type="text" class="form-control" name="first_name" id="first_name" value="<?= $user['first_name']; ?>" />
             <label for="last_name" class="">Edit your last name</label>
             <input type="text" class="form-control" name="last_name" id="last_name" value="<?= $user['last_name']; ?>" />
+
             <label for="country" class="">Edit your Country</label>
             <input type="text" class="form-control" name="country" id="country" value="<?= $user['country']; ?>" />
+
+            <label for="gender" class="">Edit your gender</label>
             <select class="form-control" id="exampleSelect1" name="gender">
                 <?php
                 $genders = [
@@ -89,12 +94,12 @@ $profilePicture = getProfilePicture($connection, $user_id);
     </div>
 
     <div class="col-6">
-        <h4>Your Comments:</h4>
+        <h4>Comments you've recieved:</h4>
         <?php foreach ($posts as $post) : ?>
             <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
                     <strong class="mr-auto"><a href="profile.php?user=<?php echo $post['posted_by']; ?>"><?php echo $post['first_name']; ?></strong></a>
-                    <small>&nbsp; <?php echo $post['created_at']; ?></small>
+                     <small>&nbsp; <?php echo $post['created_at']; ?></small>
                     <a href="deletePost.php?post_id=<?php echo $post['id'] ?>" type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </a>

@@ -2,7 +2,7 @@
 
 require ('config.php');
 
-$connection = connectDB($database);
+//$connection = connectDB($database);
 // $users = getUsers($connection);
 // $user = getOneUser($connection, $user_id);
 // $posts = getUserPosts($connection, $user_id);
@@ -93,5 +93,16 @@ function getProfilePicture($connection, $user_id) {
     return 'uploads/' . $picture[0]['file_name'];
 }
   
+function checkIfEmailExist($connection, $email)
+{
+    $statement = $connection -> prepare('SELECT * FROM users WHERE email = :email');
+
+    $statement->execute([
+        'email' => $email
+    ]);
+
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+}
 
 

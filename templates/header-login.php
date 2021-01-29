@@ -29,6 +29,8 @@ require 'functions.php';
 
 <body>
 
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand mr-auto" href="#">Mini-SM</a>
 
@@ -55,6 +57,7 @@ require 'functions.php';
   
   </div>
 </nav>
+
 
 <!-- Start container, basic on every page -->
 

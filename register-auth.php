@@ -2,9 +2,15 @@
 
 session_start();
 
-require 'functions.php';
 
-if (isset($_POST['email'], $_POST['first_name'], $_POST['last_name'],$_POST['gender'], $_POST['password'])){
+
+
+if (isset($_POST['sumbit-register'])){
+
+    // include database
+    include_once 'config.php';
+
+    //if (isset($_POST['first_name'], $_POST['last_name'], $_POST['email'],$_POST['password'], $_POST['gender'],$_POST['country'])){
 
         $firstName = $_POST['first_name'];
         $lastName = $_POST['last_name'];
@@ -24,6 +30,7 @@ if (isset($_POST['email'], $_POST['first_name'], $_POST['last_name'],$_POST['gen
             'country' => $country,
         ];
 
+
         $user_id = addToDatabase($connection, 'users', $user);
         
         $_SESSION['logged_in'] = true;
@@ -31,6 +38,4 @@ if (isset($_POST['email'], $_POST['first_name'], $_POST['last_name'],$_POST['gen
         $_SESSION['user_id'] = $user_id;
        
         header('Location: home.php');
-} else {
-   
 }

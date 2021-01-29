@@ -3,9 +3,9 @@
 session_start();
 
 if (!isset($_SESSION['logged_in'])) {
-  include "templates/header-login.php";
+    include "templates/header-login.php";
 } else {
-  include "templates/header.php";
+    include "templates/header.php";
 }
 
 $user_id = $_GET['user'];
@@ -17,14 +17,14 @@ $profilePicture = getProfilePicture($connection, $user_id);
 
 <div class="row text-center">
     <div class="col-12 ">
-        <h2 class="home-msg"><?php echo $user['first_name']; ?>! </h2>
+        <h2 class="home-msg"><?php echo $user['first_name']; ?> <?php echo $user['last_name']; ?> </h2>
     </div>
 </div>
 
 <div class="row">
     <div class="col-6">
         <div class="profile-picture">
-            <img width="450" src="<?php echo $profilePicture; ?>">
+            <img src="<?php echo $profilePicture; ?>">
         </div>
     </div>
 
@@ -43,15 +43,40 @@ $profilePicture = getProfilePicture($connection, $user_id);
         <?php endforeach; ?>
 
     </div>
+</div>
 
-    <h4>Lämna en kommentar </h4>
+<div class="row">
+    <div class="col-6">
+        <ul class="profile-information">
+            <li> <b>Namn:</b> <?php echo $user['first_name']; ?> <?php echo $user['last_name']; ?></li>
+            <li> <b>Country:</b> <?php echo $user['country']; ?></li>
+            <li> <b>Gender: </b>
 
-    <div class="mb-3">
-        <form action="message.php?user_id=<?php echo $user_id ?>" method="POST">
-            <textarea class="form-control" name="message" id="message" rows="3"></textarea><br>
-            <button type="submit" name="submit-message" class="btn btn-primary">Skicka</button>
-        </form>
+                <?php switch ($user['gender']) {
+                    case 'W':
+                        echo 'Woman';
+                        break;
+                    case 'M':
+                        echo 'Male';
+                        break;
+                    case 'O':
+                        echo 'Other';
+                        break;
+                }; ?>
+            </li>
+        </ul>
+    </div>
+    <div class="col-6">
+
+        <div class="comment-section">
+            <h4>Lämna en kommentar </h4>
+            <form action="message.php?user_id=<?php echo $user_id ?>" method="POST">
+                <textarea class="form-control" name="message" id="message" rows="3"></textarea><br>
+                <button type="submit" name="submit-message" class="btn btn-primary">Skicka</button>
+            </form>
+        </div>
 
     </div>
 </div>
 </div>
+<?php include 'templates/footer.php' ?>
