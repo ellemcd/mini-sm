@@ -35,7 +35,7 @@
     <div class="col-6">
         <div class="profile-information  text-center">
             <span class="profile-text">
-                <p class="intro">Hello my name is <?php echo $user['first_name']; ?> <?php echo $user['last_name']; ?>.</p> I live in <?php echo $user['country']; ?> and I identify myself as a <?php switch ($user['gender']) {
+                <p class="intro">Hello my name is <?php echo $user['first_name']; ?> <?php echo $user['last_name']; ?>.</p> I'm from <?php echo $user['country']; ?> and I identify myself as a <?php switch ($user['gender']) {
                         case 'W':
                             echo 'Woman';
                             break;
