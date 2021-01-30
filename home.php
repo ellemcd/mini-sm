@@ -88,7 +88,12 @@ $profilePicture = getProfilePicture($connection, $user_id);
                 <?php endforeach; ?>
             </select>
             <label for="email" class="">Change your Email: </label>
-            <input type="email" class="form-control" name="email" id="email" class="" value="<?= $user['email']; ?>" /> <br>
+            <input type="email" class="form-control" name="email" id="email" class="" value="<?= $user['email']; ?>" /> 
+            
+            <label for="password" class="">Change Password</label>
+            <input type="password" class="form-control" name="password" id="password" value="" />
+            
+            <br>
             <button type="submit" class="btn btn-primary form-control" name="submit" class="btn btn-primary">Spara</button>
         </form>
 

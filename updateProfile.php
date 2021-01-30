@@ -12,8 +12,12 @@ if (isset($_POST['submit'])) {
     $last_name = $_POST['last_name'];
     $country = $_POST['country'];
     $gender = $_POST['gender'];
+    $password = $_POST['password'];
 
-    $statement = $connection -> prepare ('UPDATE users SET email=:email, first_name=:first_name, last_name=:last_name, country=:country, gender=:gender WHERE id=:id');
+    $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+
+    $statement = $connection -> prepare ('UPDATE users SET email=:email, first_name=:first_name, last_name=:last_name, country=:country, gender=:gender, password = :password WHERE id=:id');
+
 
     $statement->execute([
         'id' => $user_id,
@@ -22,6 +26,7 @@ if (isset($_POST['submit'])) {
         'last_name' => $last_name,
         'country' => $country,
         'gender' => $gender,
+        'password' => $passwordHash,
     ]);
 
     header('Location: home.php');
