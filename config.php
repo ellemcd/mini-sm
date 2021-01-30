@@ -1,10 +1,8 @@
 <?php
 
-
-
 $database = [
     'host' => '127.0.0.1',
-    'name' => 'dw_mini-sm',
+    'name' => 'mini-sm',
     'user' => 'root',
     'password' => 'mysql'
 ];

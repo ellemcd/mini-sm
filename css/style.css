@@ -39,7 +39,6 @@ li {
 
 .profile-information {
     margin-top: 20px;
-    font-size: 1.3em;
 }
 
 .profile-picture img {
@@ -52,6 +51,15 @@ li {
     
 }
 
+.profile-text {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.intro {
+    font-weight: 800;
+    margin: 0;
+}
 /* Users */
 
 .card-title {

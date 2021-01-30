@@ -10,7 +10,6 @@ if (isset($_POST['submit-message'] )){
     $postedBy = $_SESSION['user_id'];
     $userId = $_GET['user_id'];
 
-
     if (!isset($_SESSION['logged_in'])) {
        echo "You can't comment if you're not logged in!";
     } else {

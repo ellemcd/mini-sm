@@ -1,16 +1,9 @@
 <?php
 
 session_start();
+require 'functions.php';
 
-
-
-
-if (isset($_POST['sumbit-register'])){
-
-    // include database
-    include_once 'config.php';
-
-    //if (isset($_POST['first_name'], $_POST['last_name'], $_POST['email'],$_POST['password'], $_POST['gender'],$_POST['country'])){
+if (isset($_POST['first_name'], $_POST['last_name'], $_POST['email'],$_POST['password'], $_POST['gender'],$_POST['country'])){
 
         $firstName = $_POST['first_name'];
         $lastName = $_POST['last_name'];
@@ -29,7 +22,6 @@ if (isset($_POST['sumbit-register'])){
             'gender' => $gender,
             'country' => $country,
         ];
-
 
         $user_id = addToDatabase($connection, 'users', $user);
         

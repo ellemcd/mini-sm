@@ -32,7 +32,7 @@ $profilePicture = getProfilePicture($connection, $user_id);
         </div>
         
         <form action="upload.php" method="post" enctype="multipart/form-data">
-            <p> Select Image File to Upload:</p>
+            <p>Upload a profile picture:</p>
             <input type="file" name="file">
             <input type="submit" class="btn btn-primary " name="upload" value="Upload">
 
@@ -64,17 +64,18 @@ $profilePicture = getProfilePicture($connection, $user_id);
 <div class="row">
 
     <div class="col-6">
+        <h4>Edit your settings:</h4>
         <form action="updateProfile.php" method="post" class="select-child">
-            <label for="first_name" class="">Edit your first name </label>
+            <label for="first_name" class="">First name </label>
             <input type="text" class="form-control" name="first_name" id="first_name" value="<?= $user['first_name']; ?>" />
-            <label for="last_name" class="">Edit your last name</label>
+            <label for="last_name" class="">Last name</label>
             <input type="text" class="form-control" name="last_name" id="last_name" value="<?= $user['last_name']; ?>" />
 
-            <label for="country" class="">Edit your Country</label>
+            <label for="country" class="">Country</label>
             <input type="text" class="form-control" name="country" id="country" value="<?= $user['country']; ?>" />
 
-            <label for="gender" class="">Edit your gender</label>
-            <select class="form-control" id="exampleSelect1" name="gender">
+            <label for="gender" class="">Gender</label>
+            <select class="form-control" name="gender">
                 <?php
                 $genders = [
                     'W' => 'Woman',

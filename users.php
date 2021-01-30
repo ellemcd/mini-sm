@@ -7,7 +7,9 @@ if (!isset($_SESSION['logged_in'])) {
   include "templates/header.php";
 }
 
-$users = combinedPicUser($connection);
+
+$users = combinePicAndUser($connection);
+
 ?>
 
 <div class="row">
@@ -33,4 +35,4 @@ $users = combinedPicUser($connection);
 
 </div>
 
-<?php include 'templates/footer.php'?>
+

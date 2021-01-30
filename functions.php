@@ -8,7 +8,6 @@ require ('config.php');
 // $posts = getUserPosts($connection, $user_id);
 // $profilePicture = getProfilePicture($connection, $user_id);
 
-
 function addToDatabase($connection, $tableName, $newData) {
    
     $sql = sprintf(
@@ -20,6 +19,8 @@ function addToDatabase($connection, $tableName, $newData) {
 
     $statement = $connection -> prepare($sql);
     $statement -> execute($newData);
+
+    // returns the latest id that's been added in the database.
     return $connection->lastInsertId();
 }
 
@@ -45,13 +46,16 @@ function getUsers($connection){
 
 }
 
-function combinedPicUser($connection) {
+function combinePicAndUser($connection) {
+    
+    // combine the users and images table by using the id from the users table and the user_id in images.
     $statement = $connection -> prepare ('SELECT users.id, users.first_name, users.last_name, users.country, users.created_at, images.file_name FROM users LEFT JOIN images ON users.id = images.user_id');
 
     $statement->execute();
 
     $users = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+    // loop to see if file_name is empty, if it is, a deafult picture will be added.
     foreach ($users as $index => $user){
         if(empty($user['file_name'])) {
             $users[$index]['file_name'] = 'default.png';
@@ -70,7 +74,8 @@ function getOneUser($connection, $user_id){
     ]);
 
     $user = $statement->fetchAll(PDO::FETCH_ASSOC);
-    // reset retunerar det första resultet i arrayen.
+    
+    // reset only return the first result in the array.
     return reset($user);
 }
 

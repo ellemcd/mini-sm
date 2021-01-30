@@ -9,7 +9,7 @@
       <form action="login-auth.php" method="POST">
         <h4>Log in</h4>
         <div class="form-group">
-          <input type="email" name="email" placeholder="e-mail" value="">
+          <input type="email" name="email" placeholder="E-mail" value="">
           <span class="input-icon"><i class="fa fa-envelope"></i></span>
         </div>
         <div class="form-group">
